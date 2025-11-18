@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Automation</title>
+    <!-- Add a simple SVG favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Use Inter font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="bg-gray-100 font-inter antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="mb-6">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 text-center">Home Automation</h1>
+            <p class="text-gray-500 text-center">Main Office Dashboard</p>
+        </header>
+
+        <!-- Status Bar -->
+        <div id="status-bar" class="p-3 mb-6 rounded-lg text-center font-medium text-sm transition-all">
+            <!-- Status messages will be injected here by JS -->
+        </div>
+
+        <div id="status-bar" class="p-3 mb-6 rounded-lg text-center font-medium text-sm transition-all">
+        </div>
+
+        <div class="flex justify-center mb-6">
+            <button id="voice-btn"
+                class="group relative flex items-center justify-center p-4 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 transition-all active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+
+                <span id="voice-pulse"
+                    class="hidden absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 animate-ping"></span>
+            </button>
+        </div>
+        <p id="voice-feedback" class="text-center text-gray-500 text-sm mb-6 h-5 italic"></p>
+
+        <!-- Switch Grid -->
+        <div id="switch-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+
+            <!-- Switch 1 -->
+            <div id="box-r1" data-relay="r1"
+                class="switch-box p-4 bg-white rounded-xl shadow-md cursor-pointer border-2 border-transparent hover:shadow-lg">
+                <div class="flex justify-between items-center">
+                    <span id="name-r1" class="text-lg font-semibold text-gray-700">Loading...</span>
+                    <!-- Visual Toggle -->
+                    <div class="relative">
+                        <input type="checkbox" id="switch-r1" class="sr-only peer" disabled>
+                        <div class="toggle-track w-14 h-8 bg-gray-300 rounded-full">
+                            <div class="toggle-knob absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Switch 2 -->
+            <div id="box-r2" data-relay="r2"
+                class="switch-box p-4 bg-white rounded-xl shadow-md cursor-pointer border-2 border-transparent hover:shadow-lg">
+                <div class="flex justify-between items-center">
+                    <span id="name-r2" class="text-lg font-semibold text-gray-700">Loading...</span>
+                    <div class="relative">
+                        <input type="checkbox" id="switch-r2" class="sr-only peer" disabled>
+                        <div class="toggle-track w-14 h-8 bg-gray-300 rounded-full">
+                            <div class="toggle-knob absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Switch 3 -->
+            <div id="box-r3" data-relay="r3"
+                class="switch-box p-4 bg-white rounded-xl shadow-md cursor-pointer border-2 border-transparent hover:shadow-lg">
+                <div class="flex justify-between items-center">
+                    <span id="name-r3" class="text-lg font-semibold text-gray-700">Loading...</span>
+                    <div class="relative">
+                        <input type="checkbox" id="switch-r3" class="sr-only peer" disabled>
+                        <div class="toggle-track w-14 h-8 bg-gray-300 rounded-full">
+                            <div class="toggle-knob absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Switch 4 -->
+            <div id="box-r4" data-relay="r4"
+                class="switch-box p-4 bg-white rounded-xl shadow-md cursor-pointer border-2 border-transparent hover:shadow-lg">
+                <div class="flex justify-between items-center">
+                    <span id="name-r4" class="text-lg font-semibold text-gray-700">Loading...</span>
+                    <div class="relative">
+                        <input type="checkbox" id="switch-r4" class="sr-only peer" disabled>
+                        <div class="toggle-track w-14 h-8 bg-gray-300 rounded-full">
+                            <div class="toggle-knob absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Switch 5 -->
+            <!-- <div id="box-r5" data-relay="r5"
+                class="switch-box p-4 bg-white rounded-xl shadow-md cursor-pointer border-2 border-transparent hover:shadow-lg">
+                <div class="flex justify-between items-center">
+                    <span id="name-r5" class="text-lg font-semibold text-gray-700">Loading...</span>
+                    <div class="relative">
+                        <input type="checkbox" id="switch-r5" class="sr-only peer" disabled>
+                        <div class="toggle-track w-14 h-8 bg-gray-300 rounded-full">
+                            <div class="toggle-knob absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Switch 6 -->
+            <!-- <div id="box-r6" data-relay="r6"
+                class="switch-box p-4 bg-white rounded-xl shadow-md cursor-pointer border-2 border-transparent hover:shadow-lg">
+                <div class="flex justify-between items-center">
+                    <span id="name-r6" class="text-lg font-semibold text-gray-700">Loading...</span>
+                    <div class="relative">
+                        <input type="checkbox" id="switch-r6" class="sr-only peer" disabled>
+                        <div class="toggle-track w-14 h-8 bg-gray-300 rounded-full">
+                            <div class="toggle-knob absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <!-- Link to your JS file -->
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+/* Note: Most styling is handled by Tailwind utility classes in the HTML.
+    This is the custom CSS that was in the <style> tag.
+*/
+
+/* Custom transition for a smoother feel */
+.switch-box {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Style for the visual toggle knob */
+.toggle-knob {
+    transition: transform 0.3s ease;
+}
+
+/* Tailwind's 'peer' utility will handle this, 
+    but we ensure the base styles are set 
+*/
+.peer:checked ~ .toggle-track {
+    background-color: #3b82f6; /* bg-blue-600 */
+}
+
+.peer:checked ~ .toggle-track .toggle-knob {
+    transform: translateX(1.5rem); /* 24px */
+}
+
+/* Base body styles (also set in HTML body class) 
+    You would typically set this in your main CSS
+*/
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
